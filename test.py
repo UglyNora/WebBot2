@@ -6,5 +6,6 @@ driver =webdriver.Chrome ("/Users/marysotomayor/Desktop/WebBot2/drivers/chromedr
 
 
 driver.get("https://www.amazon.com")
+driver.get("http://127.0.0.1:5000/")
 
 
