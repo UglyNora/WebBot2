@@ -1,12 +1,13 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+import datetime
 import time
 import variables
 
 driver = webdriver.Chrome ("/Users/marysotomayor/Desktop/WebBot2/drivers/chromedriver")
 
 
-#Opens a user interface.
+## Opens a user interface.
 driver.get(variables.userInterface)
 driver.maximize_window()
 driver.implicitly_wait(10)
@@ -16,5 +17,18 @@ driver.find_element_by_id("purchasetime").send_keys(variables.myDate)
 driver.find_element_by_id("purchasetime").send_keys(Keys.TAB)
 driver.find_element_by_id("purchasetime").send_keys(variables.myTime)
 
-
+## Submit form.
 driver.find_element_by_id("submitbutton").click()
+
+## Begin countdown to purchase time.
+driver.find_element_by_id("start").click()
+
+## Wait until expected date reached to purchase desired item.
+target_time = datetime.datetime(variables.myDate, variables.myTime)  
+while datetime.datetime.now() < target_time:
+    time.sleep(10)
+    if datetime.datetime.now() == target_time:
+        driver.get(variables.shopWebSite)
+        driver.maximize_window()
+        driver.implicitly_wait(10)
+
