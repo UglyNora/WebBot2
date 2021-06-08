@@ -21,7 +21,7 @@ driver.find_element_by_id(variables.purchaseTime).send_keys(variables.myTime)
 driver.find_element_by_id(variables.submitButton).click()
 
 ## Begin countdown to purchase time.
-driver.find_element_by_id(startButton).click()
+driver.find_element_by_id(variables.startButton).click()
 
 ## Wait until expected date reached to purchase desired item.
 date = variables.expectedDate

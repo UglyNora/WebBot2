@@ -17,5 +17,13 @@ def results():
    purchaseDate = request.form['purchasetime']
    return render_template('pressStart.html', purchasetime = purchaseDate)
 
+@app.route('/yes', methods=["GET"])
+def yes():
+   return render_template("success.html")
+
+@app.route('/no', methods=["GET"])
+def no():
+   return render_template("betterLuckNextTime.html")
+
 if __name__ == '__main__':
    app.run()
