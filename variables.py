@@ -4,8 +4,8 @@
 
 userInterface = "http://127.0.0.1:5000/"
 shopWebSite ="https://www.amazon.com"
-myDate = "06042021"
-myTime = "0951AM"
+myDate = "06082021"
+myTime = "1130AM"
 expectedDate = "/html/body/ul/li[1]/text()"
 amazonSearchBar = "twotabsearchtextbox"
 mySearch = "Web Design All-in-One For Dummies"

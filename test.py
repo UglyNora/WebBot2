@@ -24,10 +24,12 @@ driver.find_element_by_id("submitbutton").click()
 driver.find_element_by_id("start").click()
 
 ## Wait until expected date reached to purchase desired item.
-target_time = datetime.datetime(2021, 6, 4, 16, 7, 0)  
-while not (target_time == datetime.datetime.now()) :
+date = variables.expectedDate
+targetTime = ''.join([i for i in date if i.isdigit()])
+print(targetTime)
+while not (targetTime == datetime.datetime.now()) :
     time.sleep(10)
-    if target_time == datetime.datetime.now():
+    if targetTime == datetime.datetime.now():
         driver.get(variables.shopWebSite)
         driver.maximize_window()
         driver.implicitly_wait(10)
