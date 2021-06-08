@@ -24,12 +24,14 @@ driver.find_element_by_id("submitbutton").click()
 driver.find_element_by_id("start").click()
 
 ## Wait until expected date reached to purchase desired item.
-target_time = datetime.datetime(2021, 6, 4, 9, 59, 0)  
+target_time = datetime.datetime(2021, 6, 4, 16, 7, 0)  
 while not (target_time == datetime.datetime.now()) :
-    print(datetime.datetime.now() )
-    time.sleep()
+    time.sleep(10)
     if target_time == datetime.datetime.now():
         driver.get(variables.shopWebSite)
         driver.maximize_window()
         driver.implicitly_wait(10)
-
+        driver.find_element_by_id(variables.amazonSearchBar).send_keys(variables.mySearch)
+        driver.find_element_by_id(variables.searchButton).click()
+        driver.find_element_by_xpath(variables.desiredProduct).click()
+        driver.find_element_by_id(variables.buyNowButton).click()
