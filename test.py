@@ -13,15 +13,15 @@ driver.maximize_window()
 driver.implicitly_wait(10)
 
 ## Select a specific date and time.
-driver.find_element_by_id("purchasetime").send_keys(variables.myDate)
-driver.find_element_by_id("purchasetime").send_keys(Keys.TAB)
-driver.find_element_by_id("purchasetime").send_keys(variables.myTime)
+driver.find_element_by_id(variables.purchaseTime).send_keys(variables.myDate)
+driver.find_element_by_id(variables.purchaseTime).send_keys(Keys.TAB)
+driver.find_element_by_id(variables.purchaseTime).send_keys(variables.myTime)
 
 ## Submit form.
-driver.find_element_by_id("submitbutton").click()
+driver.find_element_by_id(variables.submitButton).click()
 
 ## Begin countdown to purchase time.
-driver.find_element_by_id("start").click()
+driver.find_element_by_id(startButton).click()
 
 ## Wait until expected date reached to purchase desired item.
 date = variables.expectedDate

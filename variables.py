@@ -3,6 +3,9 @@
 
 
 userInterface = "http://127.0.0.1:5000/"
+purchaseTime = "purchaseTime"
+submitButton = "submitbutton"
+startButton = "start"
 shopWebSite ="https://www.amazon.com"
 myDate = "06082021"
 myTime = "1130AM"
