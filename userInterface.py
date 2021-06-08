@@ -12,10 +12,14 @@ app.config['DEBUG'] = True
 def userInterface():
   return render_template("myDate.html")
 
-@app.route('/results', methods=["POST"])
-def results():
+@app.route('/date', methods=["POST"])
+def date():
    purchaseDate = request.form['purchasetime']
    return render_template('pressStart.html', purchasetime = purchaseDate)
+
+@app.route ('/pending', methods = ["POST"]) 
+def pending():
+   return render_template("pending.html") 
 
 @app.route('/yes', methods=["GET"])
 def yes():
