@@ -4,6 +4,7 @@ import datetime
 import time
 import variables
 
+
 driver = webdriver.Chrome ("/Users/marysotomayor/Desktop/WebBot2/drivers/chromedriver")
 
 
@@ -23,17 +24,24 @@ driver.find_element_by_id(variables.submitButton).click()
 ## Begin countdown to purchase time.
 driver.find_element_by_id(variables.startButton).click()
 
-## Wait until expected date reached to purchase desired item.
-date = variables.expectedDate
-targetTime = ''.join([i for i in date if i.isdigit()])
-print(targetTime)
-while not (targetTime == datetime.datetime.now()) :
+##Compare current date and time to purchase time.
+purchaseTime = datetime.datetime(variables.myDateTime)
+
+while datetime.datetime.now() < purchaseTime :
     time.sleep(10)
-    if targetTime == datetime.datetime.now():
-        driver.get(variables.shopWebSite)
-        driver.maximize_window()
-        driver.implicitly_wait(10)
-        driver.find_element_by_id(variables.amazonSearchBar).send_keys(variables.mySearch)
-        driver.find_element_by_id(variables.searchButton).click()
-        driver.find_element_by_xpath(variables.desiredProduct).click()
-        driver.find_element_by_id(variables.buyNowButton).click()
+    ## Open a new window.
+    driver.execute_script("window.open('');")
+    driver.switch_to.window(driver.window_handles[1])
+    driver.get(variables.shopWebSite)
+    driver.maximize_window()
+    driver.implicitly_wait(10)
+    driver.find_element_by_id(variables.amazonSearchBar).send_keys(variables.mySearch)
+    driver.find_element_by_id(variables.searchButton).click()
+    driver.find_element_by_xpath(variables.desiredProduct).click()
+    driver.find_element_by_id(variables.buyNowButton).click()
+    buyable = driver.find_element_by_id(variables.placeOrderButton)
+    if buyable.is_displayed():
+        driver.switch_to.window(driver.window_handles[0])
+        driver.find_element_by_id(variables.yesButton).click()
+    else:
+        driver.find_element_by_id(variables.noButton).click()
